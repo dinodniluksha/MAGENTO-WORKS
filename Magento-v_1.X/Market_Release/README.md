@@ -13,7 +13,7 @@ Let’s install the latest version (1.0.7) of Magento OGMO plugin.
 
 2.  Then purchased the plugin and copy the extension key (Access Keys) as below image.
     
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/key.PNG)
+    ![alt test](Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/key.PNG)
 
 <br/>
 
