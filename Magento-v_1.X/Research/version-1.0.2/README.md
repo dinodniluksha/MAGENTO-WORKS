@@ -2,30 +2,30 @@
 
 This implementation makes high advanced mechanism for adding “Live View” button near to “Add to Cart” button in product page. In most of themes “Add to Cart” button placed as “one DIV” architecture (Figure 1) but sometimes, “Add to Cart” button placed as “nested DIV” architecture (Figure 2). Also, the difference between “one DIV” and “nested DIV” patterns can be easily understood by observing below both figures. 
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/onee_div.PNG)<br/>
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/onee_div.PNG)<br/>
 Figure 1 (“one DIV” patterns) 
 
 <br/><br/>
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/nested_div.PNG)<br/>
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/nested_div.PNG)<br/>
 Figure 2 (“nested DIV” patterns) 
 
 <br/><br/>
 
 So, [first button adder mechanism](version-1.0.1) in OGMO plugin gives below simple output as a result but that output is different than real expected output. Because “Add to Cart” and “Live View” buttons are placed into same DIV and it’s caused to assign unfitted style to additional button (Live View).  
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/week_adder.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/week_adder.PNG)
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/wrong_output.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/wrong_output.PNG)
 
 <br/>
 Therefore, higher advance button adder mechanism is introduced to solve previous mentioned week point. Also, this mechanism can recognize whether “Add to Cart” button is in nested DIV architecture or not figure. After this recognizing step, mechanism is responsible to give signal for adding “Live View” button by following same manner of “Add to Cart” button in various Magento1 themes. It can be represented as below.
 
 <br/>
 <br/>
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/actual_output.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/actual_output.PNG)
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/expected_output.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/expected_output.PNG)
 
 <br/>
 As well as higher advance button adder mechanism is used a small trick to recognize real DIV pattern of “Add to Cart” button so “one DIV” pattern have Add to Cart button and Quantity input field in same DIV as child elements. But “Add to Cart” button is in separate child DIV as well as without Quantity input field because in this “nested DIV” architecture, Quantity input field rest in parent or sibling DIV of DIV of “Add to Cart” button. 
@@ -35,7 +35,7 @@ So, **Line 194-208** implemented for catching “one DIV” architecture by filt
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/One_DIV.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/One_DIV.PNG)
 
 <br/>
 <br/>
@@ -44,7 +44,7 @@ Next step, **Line 209-227** is analyzing DIV and SPAN (except “ogmo-gltf-viewe
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/trigger_decoder.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/trigger_decoder.PNG)
 
 <br/>
 <br/>
@@ -54,7 +54,7 @@ File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/decorder.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/decorder.PNG)
 
 <br/>
 <br/>
@@ -63,4 +63,4 @@ Finally, “Live View” button insertion process starts according to “one DIV
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.2/insertion.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.2/insertion.PNG)
