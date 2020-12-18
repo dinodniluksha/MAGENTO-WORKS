@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <liveroom_settings translate="label" module="ogmo">
+            <label>OGMO</label>
+            <sort_order>100</sort_order>
+        </liveroom_settings>
+    </tabs>
+
+    <sections>
+        <liveroomconfig translate="label" module="ogmo">
+            <label>OGMO - Settings</label>
+            <tab>liveroom_settings</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <liveroom_group translate="label" module="ogmo">
+                    <label>Live View Button Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <heading_button_styles translate="label">
+                            <label>Button Styles</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_button_styles>
+
+                        <button_font_color translate="label">
+                            <label>Button Font Color : </label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Specify the font color</comment>
+                        </button_font_color>
+
+                        <button_left_margin translate="label">
+                            <label>Left Margin : </label>
+                            <comment>
+								<![CDATA[Ex:10 (margin-left : 10px)]]>
+							</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_left_margin>
+
+                        <button_right_margin translate="label">
+                            <label>Right Margin : </label>
+                            <comment>
+								<![CDATA[Ex:10 (margin-right : 10px)]]>
+							</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>700</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_right_margin>
+                        
+                        <button_border_width translate="label">
+                            <label>Border Width : </label>
+                            <comment>
+								<![CDATA[Ex:2 (border : 2px)]]>
+							</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_border_width>
+
+                        <button_border_color translate="label">
+                            <label>Button Border Color : </label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>900</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Specify the border color</comment>
+                        </button_border_color>
+                    </fields>
+
+                </liveroom_group>
+            </groups>
+
+        </liveroomconfig>
+    </sections>
+
+</config> 

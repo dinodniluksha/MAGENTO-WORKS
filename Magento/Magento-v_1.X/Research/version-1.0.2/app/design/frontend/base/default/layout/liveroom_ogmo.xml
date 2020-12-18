@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="1.0.3">
+	<default>
+	  	<reference name="head">
+	    	<action method="addCss"><stylesheet>css/liveroom_ogmo.css</stylesheet></action>
+	  	</reference>
+	</default>
+
+    <catalog_product_view>
+        <reference name="product.info.addtocart">
+            <block type="catalog/product_view" name="abc" template="liveroom/ogmo/button_add_inline.phtml"></block>
+        </reference>
+    </catalog_product_view>
+</layout>

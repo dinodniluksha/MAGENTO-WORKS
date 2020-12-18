@@ -1,0 +1,576 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php $_Product = $this->getProduct(); ?>
+
+<?php $sku = $_Product->getData('sku'); ?>
+
+
+<?php
+
+$options = Mage::getModel('catalog/product_option')->getProductOptionCollection($_Product);
+
+foreach ($options as $option) {
+    Mage::log('Option Name: ' . $option->getDefaultTitle());
+    Mage::log('Option ID: ' . $option->getId());
+    Mage::log('    Type: ' . $option->getType());
+    Mage::log('    Class: ' . get_class($option));
+    Mage::log('    Price/Type: ' . ($option->getPrice() ? $option->getPrice() : '0.00') . ' / ' . $option->getType());
+
+    if ($option->getType() === 'drop_down' || $option->getType() === 'multiple') {
+        $values = Mage::getSingleton('catalog/product_option_value')->getValuesCollection($option);
+        Mage::log('    Values: (name/price/type/id)');
+
+        foreach ($values as $value) {
+            Mage::log('        ' . $value->getTitle() . ' / ' . $value->getPrice() . ' / ' . $value->getPriceType() .' / '. $value->getId());;
+        }
+    }
+    if ($option->getType() === 'checkbox' || $option->getType() === 'radio') {
+        $values = Mage::getSingleton('catalog/product_option_value')->getValuesCollection($option);
+        Mage::log('    Values: (name/price/type)');
+
+        foreach ($values as $value) {
+            Mage::log('        ' . $value->getTitle() . ' / ' . $value->getPrice() . ' / ' . $value->getPriceType());;
+        }
+    }
+}
+?>
+
+
+<?php 
+
+    echo '<script>';
+    echo 'console.log("sku = '. $sku .'")';
+    echo '</script>';
+
+    // echo '<script>';
+    // echo 'console.log("'. $selectedvalue .'")';
+    // echo '</script>';
+
+    $helper = Mage::helper('ogmo');
+    $ogmo_link = $helper->getLink($sku);
+
+    $color_option = 0;
+    $dropdown_id;
+    $multiple_id;
+    $radio_name;
+    $checkbox_name;
+
+    if($ogmo_link != null)
+    {
+        $options = Mage::getModel('catalog/product_option')->getProductOptionCollection($_Product);
+
+        foreach ($options as $option) 
+        {
+            if($option->getDefaultTitle() === 'Color')
+            {
+                $color_option = 1;
+
+                if ($option->getType() === 'drop_down')
+                {
+                    $dropdown_id = 'select_' . $option->getId();
+                    $values = Mage::getSingleton('catalog/product_option_value')->getValuesCollection($option);
+                    foreach ($values as $value)
+                    {
+                        $color_box[$value->getId()] = $value->getTitle();
+                    }
+                }
+                if ($option->getType() === 'multiple')
+                {
+                    $multiple_id = 'select_' . $option->getId();
+                    $values = Mage::getSingleton('catalog/product_option_value')->getValuesCollection($option);
+                    foreach ($values as $value)
+                    {
+                        $color_box[$value->getId()] = $value->getTitle();
+                    }
+                }
+                if ($option->getType() === 'radio')
+                {
+                    $radio_name = 'options[' . $option->getId() .']';
+                    $values = Mage::getSingleton('catalog/product_option_value')->getValuesCollection($option);
+                    foreach ($values as $value)
+                    {
+                        $color_box[$value->getId()] = $value->getTitle();
+                    }
+                }
+                if ($option->getType() === 'checkbox')
+                {
+                    $checkbox_name = 'options[' . $option->getId() .'][]';
+                    $values = Mage::getSingleton('catalog/product_option_value')->getValuesCollection($option);
+                    foreach ($values as $value)
+                    {
+                        $color_box[$value->getId()] = $value->getTitle();
+                    }
+                }
+            }
+        }
+    }
+
+    echo '<script>';
+    echo 'console.log("color option = '. $color_option .'")';
+    echo '</script>';
+
+    echo '<script>';
+    echo 'console.log("dropdown id = '. $dropdown_id .'")';
+    echo '</script>';
+
+    echo '<script>';
+    echo 'console.log("multiple id = '. $multiple_id .'")';
+    echo '</script>';
+
+    echo '<script>';
+    echo 'console.log("radio name = '. $radio_name .'")';
+    echo '</script>';
+
+    echo '<script>';
+    echo 'console.log("checkbox name = '. $checkbox_name .'")';
+    echo '</script>';
+
+    foreach ($color_box as $key => $val)
+    {
+    echo '<script>';
+    echo 'console.log("'.$key.'==>'.$val.'")';
+    echo '</script>';
+    }
+?>
+
+
+
+
+<!-- getting user configuration style value from admin page-->
+
+<?php $fontcolor = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_font_color', Mage::app()->getStore()); ?>
+<?php $leftmargin = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_left_margin', Mage::app()->getStore()); ?>
+<?php $rightmargin = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_right_margin', Mage::app()->getStore()); ?>
+<?php $borderwidth = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_border_width', Mage::app()->getStore()); ?>
+<?php $bordercolor = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_border_color', Mage::app()->getStore()); ?>
+
+
+<!-- assigning user configuration style value to CSS variables -->
+
+    <style>
+
+    :root {
+        --fcolor: <?php echo '#'.$fontcolor; ?>;
+        --mleft: <?php echo $leftmargin.'px'; ?>;
+        --mright: <?php echo $rightmargin.'px'; ?>;
+        --bwidth: <?php echo $borderwidth.'px'; ?>;
+        --bcolor: <?php echo '#'.$bordercolor; ?>;
+          }
+
+    .live-button
+        {
+            color: var(--fcolor) !important;
+            /* margin-left : var(--mleft) !important; */
+            /* margin-right: var(--mright) !important; */
+            background-image:none !important;
+            text-align: center !important;
+            /* padding-right: 24px !important; */
+            /* padding-left: 24px !important; */
+            border: var(--bwidth) solid var(--bcolor) !important;
+        }
+
+    .live-button-left-right-margins
+        {
+            margin-left : var(--mleft) !important;
+            margin-right: var(--mright) !important;
+        }   
+
+    .button-rack{color:#000;font-size:30px;font-weight:700;position:absolute;left:100%;bottom:50%;transform:translate(calc(-100% + -7px),calc(-24% + 16px));-webkit-transform:translate(calc(-100% + -7px),calc(-24% + 16px));padding:1rem;z-index:4000}
+    
+    .viewer-add-to-cart{background-color: #FFFFFF; /* White */border: none;color: black;font-weight:bold;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;margin: 4px 2px;cursor: pointer;font-size: 15px;}
+
+    .option-buttons{background-color: #4CAF50; /* Green */border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;margin: 4px 2px;cursor: pointer;font-size: 20px;}
+    
+    </style>
+
+<!-- div element for OGMO viewer -->
+
+    <div id="ogmo-gltf-viewer-modal" class="ogmo-modal">
+        <div class="ogmo-modal-content">
+            <span class="ogmo-modal-close" id="ogmo-modal-close">&times;</span>
+            <span class="button-rack" id="button-rack">
+                <button class="option-buttons" type="button" value="Red" onclick="viewerFunction(this.value)">RED</button>
+                <button class="option-buttons" type="button" value="Blue" onclick="viewerFunction(this.value)">BLUE</button>
+                <button type="button" title="Add to Cart" class="viewer-add-to-cart" onclick="addToCartOnIframe()">Add to Cart</button>
+            </span>
+            <iframe 
+            class="ogmo-web-frame-viewer" 
+            allowfullscreen="true" 
+            scrolling="no" 
+            id="ogmo-gltf-view-iframe" 
+            src=<?php echo $this->escapeHtml($ogmo_link);?> ></iframe>
+        </div>
+    </div>
+
+<?php if( $ogmo_link != null ) {?>  
+
+    <script>
+
+        var ogmo = document.createElement("BUTTON");
+        ogmo.setAttribute("type","button");
+        ogmo.setAttribute("title","Live View");
+        ogmo.setAttribute("onclick", "showOgmoGltfViewerModal()"); 
+        
+        var span_one = document.createElement("SPAN");
+        var span_two = document.createElement("SPAN");
+        php_txt = document.createTextNode("Live View");
+
+        span_two.appendChild(php_txt);
+        span_one.appendChild(span_two);
+        ogmo.appendChild(span_one);
+
+        // catching add to cart button
+
+        var point;
+    
+        var btns = document.getElementsByTagName("BUTTON");
+        
+        for(var i=0; i<btns.length; i++)
+        {
+            if(/ADD[/\W|\s|_/]*TO[/\W|\s|_/]*CART/gi.test(btns[i].getAttribute("title")) && btns[i].getAttribute("onclick") === "productAddToCartForm.submit(this)") 
+            {
+                point = i;
+            }
+        }
+
+        var btn = document.getElementsByTagName("BUTTON")[point];    //getting "Add to cart" button element
+        
+        var all_styles =  getComputedStyle(btn);
+
+        var left_pad = all_styles.paddingLeft;
+        var right_pad = all_styles.paddingRight;
+
+        
+        var btn_parent = btn.parentElement;      //getting parent div element of "Add to cart" button element
+        
+        var btn_childs = btn_parent.children;
+        
+        //console.log(btn_childs.length);
+
+        var remo_count = 0;                   //starting higher advanced "Live View" button adder mechanism (div reader)
+
+        var elements = [];
+        var start = 0;
+        var go;
+        var create = 1;
+
+        function decorder(obj)
+        {
+            var kids_nodes = obj.children;
+            
+            elements[start] = 1;
+            
+            
+            for(var k=0; k<kids_nodes.length; k++)
+            {
+                elements.push(kids_nodes[k]);
+            }
+            
+            for(var i=0; i<elements.length; i++)
+            {
+                if(elements[i].tagName == "INPUT" && elements[i].getAttribute("id") == "qty")
+                {
+                    create = 0;
+                    
+                    return false;
+                }
+            }
+            
+            for(var i=0; i<elements.length; i++)
+            {
+                if(elements[i] != 1 && elements[i].tagName == "DIV")
+                {
+                    start = i;
+                    go = 1;
+                    
+                    break;
+                }
+            }
+            if(go == 1)
+            {
+                decorder(elements[start]);
+            }
+        }
+
+        for(var j = 0; j<btn_childs.length; j++)
+        {
+            if((btn_childs[j].nodeName != "DIV" && btn_childs[j].nodeName != "STYLE" && btn_childs[j].nodeName != "SCRIPT") && (btn_childs[j].nodeName != "SPAN" && btn_childs[j].nodeName != "STYLE" && btn_childs[j].nodeName != "SCRIPT"))
+            {
+                remo_count = remo_count + 1;
+                //console.log(btn_childs[j]);
+
+                if(btn_childs[j].tagName == "INPUT" && btn_childs[j].getAttribute("id") == "qty")
+                {
+                    create = 0;
+                    
+                    break;
+                }
+
+            }
+            else if((btn_childs[j].tagName == "SPAN") || (btn_childs[j].tagName == "DIV" && btn_childs[j].getAttribute("id") != "ogmo-gltf-viewer-modal"))
+            {
+                //console.log(btn_childs[j]);
+
+                decorder(btn_childs[j]);
+
+                //console.log(elements);
+
+                if(create == 0)
+                {
+                    break;
+                }
+            }
+        }
+
+        //console.log(btn_parent);
+        //console.log(btn_parent.childElementCount);
+        
+        //console.log("simple elements = "+remo_count);
+        //console.log("create = "+create);
+
+        btn.classList.add("button-margins");    //adding .button-margin CSS class into Class List of "Add to cart" button
+
+        styles = btn.classList;     //getting all class names (array) of "Add to cart" button
+
+        for(var i=0; i<styles.length; i++)
+        {
+            ogmo.classList.add(styles[i]);   //assigning all class names to "Live View" button  
+        }
+
+        if(left_pad != right_pad)
+        {
+            var l_pad = parseInt(left_pad);
+            var r_pad = parseInt(right_pad);
+
+            var pad_val = (l_pad + r_pad)/2;
+
+            var pad_pix = parseInt(pad_val)+"px";
+
+            //console.log(pad_pix);
+
+            ogmo.style.paddingLeft = pad_pix;
+            ogmo.style.paddingRight = pad_pix;
+        }
+    
+
+        ogmo.classList.add("live-button");      //assigning .live-button CSS class into Class List of "Live View" button
+
+        if(create == 0)
+        {
+            ogmo.classList.add("live-button-left-right-margins");
+
+            btn_parent.insertBefore(ogmo, btn);
+            //btn_parent.insertBefore(ogmo, btn.nextSibling);
+        }
+        else if(create == 1)
+        {
+            var new_div = document.createElement("DIV");
+            new_div.setAttribute("class", btn_parent.className);
+
+            new_div.appendChild(ogmo);
+
+            new_div.classList.add("live-button-left-right-margins");
+
+            real_btn_parent = btn_parent.parentElement;
+
+            real_btn_parent.insertBefore(new_div, btn_parent);
+        }
+
+
+
+        //handling viewer and function of "Live View" button (existing code)
+
+        var dropdown_id = "<?php echo $dropdown_id;?>";
+        var multiple_id = "<?php echo $multiple_id;?>";
+        var radio_name = "<?php echo $radio_name;?>";
+        var checkbox_name = "<?php echo $checkbox_name;?>";
+
+        var color_box = <?php echo json_encode($color_box) ?>;  //assigning to javascript color_box
+
+        var body = document.body;
+        var modal = document.getElementById('ogmo-gltf-viewer-modal');
+        var span = document.getElementById("ogmo-modal-close");
+
+
+        function callingColor(color)             //use for assigning color value to "color changing mechanism"
+        {
+            //mechanism must be created to change color of 3d model
+            console.log("starting color changing process <= "+color);
+        }
+
+        function showOgmoGltfViewerModal()              //"Live View" button onclick function
+        {
+            modal.style.display = "block";
+            body.style.overflow = "hidden";
+
+
+            var val;
+            var color_option = <?php echo $color_option; ?>;
+            
+            if(color_option === 1)
+            {
+                if(dropdown_id != "")
+                {
+                    val = document.getElementById(dropdown_id).value;
+                    if(val === "")
+                    {
+                        val = document.getElementById(dropdown_id).children[1].value;
+                    }
+                }
+                if(multiple_id != "")
+                {
+                    val = document.getElementById(multiple_id).value;
+                    if(val === "")
+                    {
+                        val = document.getElementById(multiple_id).children[0].value;
+                    }
+                }
+                if(radio_name != "")
+                {
+                    val = document.getElementsByName(radio_name)[0].value;
+                    var elements = document.getElementsByName(radio_name);
+                    for(var i=0; i<elements.length; i++)
+                    {
+                        var x = document.getElementsByName(radio_name)[i].checked;
+                        if(x)
+                        {
+                            val = document.getElementsByName(radio_name)[i].value;
+                        }
+                    }
+                }
+                if(checkbox_name != "")
+                {
+                    val = document.getElementsByName(checkbox_name)[0].value;
+                    var elements = document.getElementsByName(checkbox_name);
+                    for(var i=0; i<elements.length; i++)
+                    {
+                        var x = document.getElementsByName(checkbox_name)[i].checked;
+                        if(x)
+                        {
+                            val = document.getElementsByName(checkbox_name)[i].value;
+                        }
+                    }
+                }
+                console.log(val+" "+color_box[val]);
+                callingColor(color_box[val]);
+            }
+        }
+
+        span.onclick = function()
+        {
+            modal.style.display = "none";
+            body.style.overflow = "visible";
+        }
+
+        window.onclick = function(event)
+        {
+            if (event.target == modal) 
+            {
+                modal.style.display = "none";
+                body.style.overflow = "visible";
+            }
+        }
+
+        function addToCartOnIframe()            //onclick function for "Add to Cart" button on iframe 
+        {
+            productAddToCartForm.submit(this);
+
+            // further we can implement business logic to track 
+            // "Add to Cart" button click count through the OGMO plugin
+
+            modal.style.display = "none";
+            body.style.overflow = "visible";
+        }
+        
+
+        function assigningValue(color)             //use to assign user selected value to “Add to Cart” form through the iframe
+        {
+            var assign_value;
+
+            console.log(color_box);
+
+            for(var key in color_box)
+            {
+                var color_name = color_box[key];
+                if(color_name == color)
+                {
+                    assign_value = key;
+                    break;
+                }
+            }
+            console.log("color go to assign in Add to Cart form <= "+assign_value+" "+"("+color+")");
+
+            if(dropdown_id != "")
+            {
+                    document.getElementById(dropdown_id).value = assign_value;
+            }
+            if(multiple_id != "")
+            {
+                    document.getElementById(multiple_id).value = assign_value;
+            }
+            if(radio_name != "")
+            {
+                var elements = document.getElementsByName(radio_name);
+
+                for(var i=0; i<elements.length; i++)
+                {
+                    var x = document.getElementsByName(radio_name)[i].value;
+
+                    if(x == assign_value)
+                    {
+                        document.getElementsByName(radio_name)[i].checked = true;
+                        break;
+                    }
+                }
+            }
+            if(checkbox_name != "")
+            {
+    
+                var elements = document.getElementsByName(checkbox_name);
+
+                for(var i=0; i<elements.length; i++)
+                {
+                    var x = document.getElementsByName(checkbox_name)[i].value;
+
+                    if(x == assign_value)
+                    {
+                        document.getElementsByName(checkbox_name)[i].checked = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        function viewerFunction(color)          //implementing viewerFunction() on color option buttons in viewer
+        {
+        assigningValue(color);
+        callingColor(color);
+        }
+
+    </script>
+<?php } ?>

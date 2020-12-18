@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config>
+
+    <modules>
+        <Liveroom_Ogmo>
+            <version>1.0.1</version>
+        </Liveroom_Ogmo>
+    </modules>
+
+    <frontend>
+        <layout>
+            <updates>
+                <Liveroom_Ogmo module="Liveroom_Ogmo">
+                    <file>liveroom_ogmo.xml</file>
+                </Liveroom_Ogmo>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+
+        <models>
+            <ogmo>
+                <class>Liveroom_Ogmo_Model</class>
+            </ogmo>
+        </models>
+
+        <helpers>
+            <ogmo>
+                <class>Liveroom_Ogmo_Helper</class>
+            </ogmo>
+        </helpers>
+
+    </global>
+    
+    <adminhtml>
+    
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <liveroomconfig>
+                                            <title>Liveroom -  All</title>
+                                        </liveroomconfig>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+        <layout>
+            <updates>
+                <basket>
+                <file>picker.xml</file>
+                </basket>
+            </updates>
+        </layout>
+
+    </adminhtml>
+    
+    <default>
+        <liveroomconfig>
+            <liveroom_group>
+                <button_font_color><![CDATA[FFFFFF]]></button_font_color>
+                <button_left_margin><![CDATA[10]]></button_left_margin>
+                <button_right_margin><![CDATA[10]]></button_right_margin>
+                <button_border_width><![CDATA[0]]></button_border_width>
+                <button_border_color><![CDATA[FFFFFF]]></button_border_color>
+            </liveroom_group>
+        </liveroomconfig>
+    </default>
+
+</config>

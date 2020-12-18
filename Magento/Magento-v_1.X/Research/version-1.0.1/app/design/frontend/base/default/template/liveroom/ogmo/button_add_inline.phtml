@@ -1,0 +1,206 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php $_Product = $this->getProduct(); ?>
+
+<?php $sku = $_Product->getData('sku'); ?>
+
+<?php 
+
+    echo '<script>';
+    echo 'console.log("'. $sku .'")';
+    echo '</script>';
+
+    $helper = Mage::helper('ogmo');
+    $ogmo_link = $helper->getLink($sku);
+
+?>
+
+<!-- getting user configuration style value from admin page-->
+
+<?php $fontcolor = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_font_color', Mage::app()->getStore()); ?>
+<?php $leftmargin = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_left_margin', Mage::app()->getStore()); ?>
+<?php $rightmargin = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_right_margin', Mage::app()->getStore()); ?>
+<?php $borderwidth = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_border_width', Mage::app()->getStore()); ?>
+<?php $bordercolor = Mage::getStoreConfig('liveroomconfig/liveroom_group/button_border_color', Mage::app()->getStore()); ?>
+
+
+<!-- assigning user configuration style value to CSS variables -->
+
+    <style>
+
+    :root {
+        --fcolor: <?php echo '#'.$fontcolor; ?>;
+        --mleft: <?php echo $leftmargin.'px'; ?>;
+        --mright: <?php echo $rightmargin.'px'; ?>;
+        --bwidth: <?php echo $borderwidth.'px'; ?>;
+        --bcolor: <?php echo '#'.$bordercolor; ?>;
+          }
+
+    .live-button
+        {
+            color: var(--fcolor) !important;
+            margin-left : var(--mleft) !important;
+            margin-right: var(--mright) !important;
+            background-image:none !important;
+            text-align: center !important;
+            /* padding-right: 24px !important; */
+            /* padding-left: 24px !important; */
+            border: var(--bwidth) solid var(--bcolor) !important;
+        }
+
+    </style>
+
+<!-- div element for OGMO viewer -->
+
+    <div id="ogmo-gltf-viewer-modal" class="ogmo-modal">
+        <div class="ogmo-modal-content">
+            <span class="ogmo-modal-close" id="ogmo-modal-close">&times;</span>
+            <iframe 
+            class="ogmo-web-frame-viewer" 
+            allowfullscreen="true" 
+            scrolling="no" 
+            id="ogmo-gltf-view-iframe" 
+            src=<?php echo $this->escapeHtml($ogmo_link);?> ></iframe>
+        </div>
+    </div>
+
+<?php if( $ogmo_link != null ) {?>  
+
+    <script>
+       
+        var ogmo = document.createElement("BUTTON");
+        ogmo.setAttribute("type","button");
+        ogmo.setAttribute("title","Live View");
+        ogmo.setAttribute("onclick", "showOgmoGltfViewerModal()"); 
+        
+        var span_one = document.createElement("SPAN");
+        var span_two = document.createElement("SPAN");
+        php_txt = document.createTextNode("Live View");
+
+        span_two.appendChild(php_txt);
+        span_one.appendChild(span_two);
+        ogmo.appendChild(span_one);
+
+        // catching add to cart button
+
+        var point;
+    
+        var btns = document.getElementsByTagName("BUTTON");
+        
+        for(var i=0; i<btns.length; i++)
+        {
+            if(/ADD[/\W|\s|_/]*TO[/\W|\s|_/]*CART/gi.test(btns[i].getAttribute("title")) && btns[i].getAttribute("onclick") === "productAddToCartForm.submit(this)")
+            {
+                point = i;
+            }
+        }
+
+        var btn = document.getElementsByTagName("BUTTON")[point];    //getting "Add to cart" button element
+
+        var all_styles =  getComputedStyle(btn);
+
+        
+        var btn_parent = btn.parentElement;      //getting parent div element of "Add to cart" button element
+
+        btn.classList.add("button-margins");    //adding .button-margin CSS class into Class List of "Add to cart" button
+
+        styles = btn.classList;     //getting all class names (array) of "Add to cart" button
+
+        for(var i=0; i<styles.length; i++)
+        {
+            ogmo.classList.add(styles[i]);   //assigning all class names to "Live View" button     
+        }
+
+
+        var left_pad = all_styles.paddingLeft;
+        var right_pad = all_styles.paddingRight;
+
+        console.log("Left padding (Add to Cart) = "+left_pad);
+        console.log("Right padding (Add to Cart) = "+right_pad);
+
+        if(left_pad != right_pad)           //resolving left_pad != right_pad issue for "Live View" button
+        {
+            var l_pad = parseInt(left_pad);
+            var r_pad = parseInt(right_pad);
+
+            var pad_val = (l_pad + r_pad)/2;
+
+            var pad_pix = parseInt(pad_val)+"px";
+
+            console.log("Left & Right padding (Live View) = "+pad_pix);
+
+            ogmo.style.paddingLeft = pad_pix;
+            ogmo.style.paddingRight = pad_pix;
+        }
+        else                //left_pad == right_pad for "Live View" button
+        {
+            var l_pad = parseInt(left_pad);
+            var r_pad = parseInt(right_pad);
+
+            var pad_val = (l_pad + r_pad)/2;
+            var pad_pix = parseInt(pad_val)+"px";
+
+            console.log("Left & Right padding (Live View) = "+pad_pix);
+        }
+    
+
+        ogmo.classList.add("live-button");      //assigning .live-button CSS class into Class List of "Live View" button
+        
+        btn_parent.insertBefore(ogmo, btn);
+        //btn_parent.insertBefore(ogmo, btn.nextSibling);
+        
+        
+        //handling viewer and function of "Live View" button (existing code)
+        var body = document.body;
+        var modal = document.getElementById('ogmo-gltf-viewer-modal');
+        var span = document.getElementById("ogmo-modal-close");
+
+        function showOgmoGltfViewerModal()
+        {
+            modal.style.display = "block";
+            body.style.overflow = "hidden";
+        }
+
+        span.onclick = function()
+        {
+            modal.style.display = "none";
+            body.style.overflow = "visible";
+        }
+
+        window.onclick = function(event)
+        {
+            if (event.target == modal) 
+            {
+                modal.style.display = "none";
+                body.style.overflow = "visible";
+            }
+        }
+
+    </script>
+
+<?php } ?>
