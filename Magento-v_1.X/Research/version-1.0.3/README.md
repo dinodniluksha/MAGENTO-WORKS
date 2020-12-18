@@ -8,7 +8,7 @@ If a viewer link is available, **Line 83-131** try to discover data related to c
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/getOpt.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/getOpt.JPG)
 
 <br/>
 
@@ -16,7 +16,7 @@ Below code snip from **Line 432-481** which can get user selected color option v
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/getOptValue.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/getOptValue.JPG)
 
 <br/>
 
@@ -24,7 +24,7 @@ File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/colorChange.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/colorChange.JPG)
 
 <br/>
 
@@ -32,12 +32,12 @@ After clicking the “Live View” button the relevant 3D model of product view 
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/viewerFun.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/viewerFun.JPG)
 
 
  **viewerFunction(color)** is triggered by clicking option buttons like below image.
  
- ![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/grouped.png)
+ ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/grouped.png)
  
  <br/>
  
@@ -45,7 +45,7 @@ File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline
  
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/asignValue.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/asignValue.JPG)
 
 <br/>
 
@@ -53,11 +53,11 @@ Finally, user can submit the Add to Cart form by clicking “Add to Cart” butt
 
 File : app/design/frontend/base/default/template/liveroom/ogmo/button_add_inline.phtml
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/Capture.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/Capture.JPG)
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/UntitledAddToCart.png)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/UntitledAddToCart.png)
 
 End result (Option buttons + “Add to Cart” button) can be seen after clicking “Live View” button as below the image.
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.3/final.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.3/final.JPG)
  
