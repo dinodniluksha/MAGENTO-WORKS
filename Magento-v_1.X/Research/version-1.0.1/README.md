@@ -2,7 +2,7 @@
 
 This is a very basic Magento1 OGMO plugin for achieving major requirements of OGMO project. Those major requirements and how they could be succeeded describe as below. 
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.1/main_structure.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.1/main_structure.JPG)
 
 ### Requirements and how they succeeded
 
