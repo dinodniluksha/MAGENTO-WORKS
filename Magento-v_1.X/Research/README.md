@@ -85,7 +85,7 @@ https://www.dckap.com/blog/steps-to-create-magento-extension-package-file/ <br/>
 
 Let’s fill Contents considering like below extension.
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.1/final_struct.JPG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.1/final_struct.JPG)
 
     Target :  Magento Community module file 
     Path : Liveroom 
@@ -120,7 +120,7 @@ At the end of the packaging, 3 files are generated like below image and further 
 *  [Direct packaged uploading](#direct-packaged-uploading)
 *  [Magento Marketplace uploading](#magento-marketplace-uploading)
 
-![alt test](README_IMAGES/Magento_Plugins/Magento1/further/packaged.PNG)
+![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/packaged.PNG)
 
 <br/>
 
@@ -131,17 +131,17 @@ Direct uploading packaged extension (Vendor_Module-version.tgz) file through the
 1. Go to Dashboard of your Magento1 website and Login to Magento Connect Manager page. <br/>
     (System > Magento Connect > Magento Connect Manager) 
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/connect_manager.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/connect_manager.PNG)
 <br/>
 
 2. Click “Choose File” button in **Direct package file upload** field and select your desire package file 
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.1/upoading.JPG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.1/upoading.JPG)
 <br/>
 
 3. Then click “Upload” button to continue the progress so you can see below window image. 
     
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/v1.0.1/progress.JPG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/v1.0.1/progress.JPG)
 
 4. Finally click the “Refresh” button to complete the extension uploading. 
 
@@ -173,13 +173,13 @@ Uploading packaged extension (Vendor_Module-version.tgz) into Magento Marketplac
     Email : info@liveroom.xyz <br/>
     Password : liver00m@1
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/extension.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/extension.PNG)
     
     <br/>
     
 3. After click “Submit a New Version” button in **Submit a New Version** field as below image.
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/submittig.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/submittig.PNG)
     
     <br/>
     
