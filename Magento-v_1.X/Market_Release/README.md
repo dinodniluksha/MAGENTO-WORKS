@@ -20,7 +20,7 @@ Let’s install the latest version (1.0.7) of Magento OGMO plugin.
 3. Go to Dashboard of your Magento1 website and Login to **Magento Connect Manager** page. <br/>
     (System > Magento Connect > Magento Connect Manager) 
 
-    ![alt test](/README_IMAGES/Magento_Plugins/Magento1/further/connect_manager.PNG)
+    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/connect_manager.PNG)
     
 <br/>
     
