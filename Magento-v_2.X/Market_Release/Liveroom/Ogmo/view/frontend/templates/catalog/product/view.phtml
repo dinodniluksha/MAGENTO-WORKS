@@ -1,0 +1,134 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+
+<?php $_product = $block->getProduct(); ?>
+<?php $sku = $_product->getSku(); ?>
+
+<?php
+echo '<script>';
+echo 'console.log("'. $sku .'")';
+echo '</script>';
+
+$helper = $this->helper('Liveroom\Ogmo\Helper\Data');
+
+$ogmo_link = $helper->getlink();
+
+
+if($ogmo_link != null)
+{
+    echo '<script>';
+    echo 'console.log("'. $ogmo_link .'")';
+    echo '</script>';
+}
+
+?>
+
+
+<!-- div element for OGMO viewer -->
+
+<div id="ogmo-gltf-viewer-modal" class="ogmo-modal">
+    <div class="ogmo-modal-content">
+        <span class="ogmo-modal-close" id="ogmo-modal-close">&times;</span>
+        <iframe 
+        class="ogmo-web-frame-viewer" 
+        allowfullscreen="true" 
+        scrolling="no" 
+        id="ogmo-gltf-view-iframe" 
+        src=<?php echo $this->escapeHtml($ogmo_link);?>></iframe>
+    </div>
+</div>
+
+
+
+<?php if( $ogmo_link != null ) {?>
+    <script>
+        
+            console.log("Sawandi");
+
+            //creating "Live View" button element
+
+            var ogmo = document.createElement("BUTTON");
+            ogmo.setAttribute("type","button");
+            ogmo.setAttribute("title","Live View");
+            ogmo.setAttribute("onclick", "showOgmoGltfViewerModal()"); 
+            
+            var span_one = document.createElement("SPAN");
+            var span_two = document.createElement("SPAN");
+            php_txt = document.createTextNode("Live View");
+
+            span_two.appendChild(php_txt);
+            span_one.appendChild(span_two);
+            ogmo.appendChild(span_one);
+
+            // catching add to cart button
+
+            var point;
+        
+            var btns = document.getElementsByTagName("BUTTON");
+            
+            for(var i=0; i<btns.length; i++)
+            {
+                if (/ADD[/\W|\s|_/]*TO[/\W|\s|_/]*CART/gi.test(btns[i].getAttribute("title")) && btns[i].getAttribute("id") === "product-addtocart-button") 
+                {
+                    point = i;
+                }
+            }
+
+            var btn = document.getElementsByTagName("BUTTON")[point];    //getting "Add to cart" button element
+
+            var btn_parent = btn.parentElement;      //getting parent div element of "Add to cart" button element
+
+            btn.classList.add("button-margins");    //adding .button-margin CSS class into Class List of "Add to cart" button
+
+            styles = btn.classList;     //getting all class names (array) of "Add to cart" button
+
+            for(var i=0; i<styles.length; i++)
+            {
+                ogmo.classList.add(styles[i]);      //assigning all class names to "Live View" button
+            }
+
+            ogmo.classList.add("live-button");      //assigning .live-button CSS class into Class List of "Live View" button
+
+            btn_parent.insertBefore(ogmo, btn);
+            //btn_parent.insertBefore(ogmo, btn.nextSibling);
+
+
+
+            //handling viewer and function of "Live View" button (existing code)
+
+            var body = document.body;
+            var modal = document.getElementById('ogmo-gltf-viewer-modal');
+            var span = document.getElementById("ogmo-modal-close");
+
+            function showOgmoGltfViewerModal()
+            {
+                modal.style.display = "block";
+                body.style.overflow = "hidden";
+            }
+
+            span.onclick = function()
+            {
+                modal.style.display = "none";
+                body.style.overflow = "visible";
+            }
+
+            window.onclick = function(event)
+            {
+                if (event.target == modal) 
+                {
+                    modal.style.display = "none";
+                    body.style.overflow = "visible";
+                }
+            }
+
+
+    </script>
+<?php } ?>
