@@ -13,29 +13,29 @@ Let’s install the latest version (1.0.7) of Magento OGMO plugin.
 
 2.  Then purchased the plugin and copy the extension key (Access Keys) as below image.
     
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/key.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/key.PNG)
 
 <br/>
 
 3. Go to Dashboard of your Magento1 website and Login to **Magento Connect Manager** page. <br/>
     (System > Magento Connect > Magento Connect Manager) 
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/connect_manager.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/connect_manager.PNG)
     
 <br/>
     
 4. Paste the Access Keys (extension key) inside **Install New Extension** field and click “Install” button.
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/install_key.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/install_key.PNG)
     
 <br>
 
 5. Now you got the bellow window and click “Proceed” button to continue the installing proceed.
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/proceed.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/proceed.PNG)
     
 <br/>
     
 6. Finally, below image is appeared and click the “Refresh” button to complete the extension installing.
 
-    ![alt test](README_IMAGES/Magento_Plugins/Magento1/further/refresh.PNG)
+    ![alt test](https://github.com/dinodniluksha/MAGENTO-WORKS/blob/master/Magento-v_1.X/README_IMAGES/Magento_Plugins/Magento1/further/refresh.PNG)
